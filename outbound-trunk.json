@@ -1,0 +1,9 @@
+{
+    "trunk": {
+      "name": "MKIA outbound trunk",
+      "address": "mkia.pstn.twilio.com",
+      "numbers": ["+19284920664"],
+      "auth_username": "ramasen",
+      "auth_password": "kinxoj-4kydwI-wytrox"
+    }
+  }
