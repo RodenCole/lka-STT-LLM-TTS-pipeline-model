@@ -81,3 +81,40 @@ lk sip participant create sip-participant.json
 ```
 
 Make sure you have the required CLI tools (such as `lk`) installed and your environment variables configured in your `.env` file. 
+
+## Useful Links
+
+These are useful links when I was working on this
+
+-[Intro the Realtime API](https://openai.com/index/introducing-the-realtime-api/)
+-[OpenAI and LiveKit Advance Voice Realtime API](https://blog.livekit.io/openai-livekit-partnership-advanced-voice-realtime-api/)
+-[OpenAI and LiveKit Integration](https://docs.livekit.io/agents/integrations/openai/)
+-[LiveKit AI Agents Telephony](https://docs.livekit.io/agents/start/telephony/)
+
+## Running with Docker
+
+You can build and run this project in a Docker container. Here are the steps:
+
+### 1. Build the Docker Image
+
+From the project root, run:
+
+```bash
+docker build -t my-livekit-agent .
+```
+- This command builds the Docker image and tags it as `my-livekit-agent`.
+
+### 2. Run the Docker Container
+
+```bash
+docker run --rm -it --env-file .env -p 8081:8081 my-livekit-agent
+```
+- `--env-file .env` loads environment variables from your `.env` file.
+- `-p 8081:8081` maps port 8081 from the container to your host (for health checks or other services).
+- `--rm` removes the container after it stops.
+- `-it` allows interactive mode (useful for logs and debugging).
+- `my-livekit-agent` is the image name you built in the previous step.
+
+**Note:**
+- Make sure your `.env` file is present in your project root and contains all required environment variables.
+- The application will be accessible on `localhost:8081` if it exposes a health check or web endpoint.

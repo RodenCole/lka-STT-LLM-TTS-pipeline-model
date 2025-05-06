@@ -1,7 +1,9 @@
 {
-    "rule": {
+  "name": "MKIA dispatch-rule",
+  "trunk_ids": ["ST_m5BaQzYpwjj4"],
+  "rule": {
       "dispatchRuleIndividual": {
-        "roomPrefix": "my-sip-room"
+          "roomPrefix": "call-"
       }
-    }
   }
+}
