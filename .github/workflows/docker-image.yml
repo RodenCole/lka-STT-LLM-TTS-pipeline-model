@@ -34,3 +34,7 @@ jobs:
         
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ikasttllmtts:latest
+
+    - name: Push Docker image
+      run: |
+        docker push ${{ secrets.ACR_LOGIN_SERVER }}/ikasttllmtts/${{ env.IMAGE_NAME }}:latest
