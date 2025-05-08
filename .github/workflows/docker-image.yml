@@ -6,13 +6,26 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  IMAGE_NAME: ikasttllmtts:latest
+
 jobs:
 
-  build:
-
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Log in to Azure
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_9F8512E7B0064D6D85C603E65DC7E3BB }}
+        tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_74C4884A6C4346C8AC9FB397124D9692 }}
+        subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_008606A2069A489D84F884523B227942 }}
+
+    - name: Log in to ACR
+      run: az acr login --name ${{ secrets.ACR_NAME }}
+        
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag ikasttllmtts:latest
